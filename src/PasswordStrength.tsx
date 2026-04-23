@@ -12,66 +12,53 @@ const PasswordStrength: React.FC<Props> = ({ password }) => {
     const hasNumber = /[0-9]/.test(password);
     const hasSpecialChar = /[!@#$%^&*]/.test(password);
 
-    const criteria = [
+    const score = [
         hasMinLength,
         hasUppercase,
         hasNumber,
         hasSpecialChar,
-    ];
+    ].filter(Boolean).length;
 
-    const score = criteria.filter(Boolean).length;
-
-    const getStrength = () => {
+    const getStrength = (): string => {
         if (score <= 1) return "Slabé";
         if (score <= 3) return "Střední";
         return "Silné";
     };
 
-    const getColor = () => {
-        if (score <= 1) return "red";
-        if (score <= 3) return "orange";
-        return "green";
-    };
+    const strengthClass =
+        score <= 1 ? "weak" : score <= 3 ? "medium" : "strong";
 
     return (
-        <div style={{ marginTop: "20px" }}>
-            <button onClick={() => setShowPassword(!showPassword)}>
+        <div className="password-strength">
+            <button
+                className="button"
+                onClick={() => setShowPassword(!showPassword)}
+            >
                 {showPassword ? "Skrýt heslo" : "Zobrazit heslo"}
             </button>
 
-            {showPassword && <p>{password}</p>}
+            {showPassword && <p className="password-preview">{password}</p>}
 
-            <div
-                style={{
-                    height: "10px",
-                    width: "100%",
-                    backgroundColor: "#ddd",
-                    marginTop: "10px",
-                }}
-            >
+            <div className="progressBar">
                 <div
-                    style={{
-                        height: "100%",
-                        width: `${(score / 4) * 100}%`,
-                        backgroundColor: getColor(),
-                        transition: "0.3s",
-                    }}
+                    className={`progress ${strengthClass}`}
+                    style={{ width: `${(score / 4) * 100}%` }}
                 />
             </div>
 
-            <p>Síla hesla: {getStrength()}</p>
+            <p className="strength-text">Síla hesla: {getStrength()}</p>
 
-            <ul>
-                <li style={{ color: hasMinLength ? "green" : "red" }}>
+            <ul className="criteria">
+                <li className={hasMinLength ? "valid" : "invalid"}>
                     Minimálně 8 znaků
                 </li>
-                <li style={{ color: hasUppercase ? "green" : "red" }}>
+                <li className={hasUppercase ? "valid" : "invalid"}>
                     Alespoň jedno velké písmeno
                 </li>
-                <li style={{ color: hasNumber ? "green" : "red" }}>
+                <li className={hasNumber ? "valid" : "invalid"}>
                     Alespoň jedno číslo
                 </li>
-                <li style={{ color: hasSpecialChar ? "green" : "red" }}>
+                <li className={hasSpecialChar ? "valid" : "invalid"}>
                     Speciální znak (!@#$%^&*)
                 </li>
             </ul>

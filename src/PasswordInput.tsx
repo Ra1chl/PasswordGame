@@ -15,6 +15,7 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
 
     return (
         <input
+            className="input"
             type="password"
             value={password}
             onChange={handleChange}
