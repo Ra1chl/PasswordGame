@@ -19,7 +19,7 @@ const PasswordStrength: React.FC<Props> = ({ password }) => {
         hasSpecialChar,
     ].filter(Boolean).length;
 
-    const getStrength = (): string => {
+    const getStrength = () => {
         if (score <= 1) return "Slabé";
         if (score <= 3) return "Střední";
         return "Silné";
@@ -29,36 +29,38 @@ const PasswordStrength: React.FC<Props> = ({ password }) => {
         score <= 1 ? "weak" : score <= 3 ? "medium" : "strong";
 
     return (
-        <div className="password-strength">
+        <div className="mt-4">
             <button
-                className="button"
+                className="btn primary-btn mb-3"
                 onClick={() => setShowPassword(!showPassword)}
             >
                 {showPassword ? "Skrýt heslo" : "Zobrazit heslo"}
             </button>
 
-            {showPassword && <p className="password-preview">{password}</p>}
+            {showPassword && (
+                <p className="alert alert-secondary py-2">{password}</p>
+            )}
 
-            <div className="progressBar">
+            <div className="progress mb-3">
                 <div
-                    className={`progress ${strengthClass}`}
+                    className={`progress-bar custom-progress ${strengthClass}`}
                     style={{ width: `${(score / 4) * 100}%` }}
                 />
             </div>
 
-            <p className="strength-text">Síla hesla: {getStrength()}</p>
+            <p className="fw-bold">Síla hesla: {getStrength()}</p>
 
-            <ul className="criteria">
-                <li className={hasMinLength ? "valid" : "invalid"}>
+            <ul className="list-group">
+                <li className={`list-group-item ${hasMinLength ? "valid" : "invalid"}`}>
                     Minimálně 8 znaků
                 </li>
-                <li className={hasUppercase ? "valid" : "invalid"}>
+                <li className={`list-group-item ${hasUppercase ? "valid" : "invalid"}`}>
                     Alespoň jedno velké písmeno
                 </li>
-                <li className={hasNumber ? "valid" : "invalid"}>
+                <li className={`list-group-item ${hasNumber ? "valid" : "invalid"}`}>
                     Alespoň jedno číslo
                 </li>
-                <li className={hasSpecialChar ? "valid" : "invalid"}>
+                <li className={`list-group-item ${hasSpecialChar ? "valid" : "invalid"}`}>
                     Speciální znak (!@#$%^&*)
                 </li>
             </ul>
