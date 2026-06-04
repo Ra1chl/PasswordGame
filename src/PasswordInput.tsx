@@ -9,16 +9,12 @@ const PasswordInput: React.FC<PasswordInputProps> = ({
                                                          password,
                                                          setPassword,
                                                      }) => {
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setPassword(e.target.value);
-    };
-
     return (
         <input
-            className="input"
+            className="form-control mb-3"
             type="password"
             value={password}
-            onChange={handleChange}
+            onChange={(e) => setPassword(e.target.value)}
             placeholder="Zadejte heslo"
         />
     );

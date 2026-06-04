@@ -1,75 +1,79 @@
-.container {
-  background: #1e293b;
-  padding: 25px;
-  border-radius: 12px;
-  width: 100%;
-  max-width: 400px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+:root {
+  --primary-color: #3498db;
+  --background-color: #f4f7fb;
+  --card-color: #ffffff;
+  --text-color: #1f2937;
+  --muted-color: #6b7280;
+  --valid-color: #198754;
+  --invalid-color: #dc3545;
+  --medium-color: #ffc107;
 }
 
-.title {
-  margin-bottom: 15px;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #60a5fa;
+    --background-color: #0f172a;
+    --card-color: #1e293b;
+    --text-color: #f8fafc;
+    --muted-color: #cbd5e1;
+    --valid-color: #22c55e;
+    --invalid-color: #f87171;
+    --medium-color: #facc15;
+  }
 }
 
-.input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
+.app-page {
+  min-height: 100vh;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.app-card {
+  max-width: 500px;
+  margin: 0 auto;
+  background-color: var(--card-color);
+  color: var(--text-color);
   border: none;
-  outline: none;
-  margin-bottom: 15px;
-  font-size: 14px;
+  border-radius: 18px;
 }
 
-.button {
-  padding: 8px 12px;
-  border: none;
-  border-radius: 8px;
-  background: #3b82f6;
+.primary-btn {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
   color: white;
-  cursor: pointer;
-  margin-bottom: 10px;
 }
 
-.button:hover {
-  background: #2563eb;
+.primary-btn:hover {
+  filter: brightness(0.9);
+  color: white;
 }
 
-.progressBar {
-  height: 10px;
-  width: 100%;
-  background: #334155;
-  border-radius: 10px;
-  overflow: hidden;
-  margin-top: 10px;
+.custom-progress {
+  transition: width 0.3s ease;
 }
 
-.progress {
-  height: 100%;
-  transition: 0.3s;
+.custom-progress.weak {
+  background-color: var(--invalid-color);
 }
 
-.weak {
-  background: #ef4444;
+.custom-progress.medium {
+  background-color: var(--medium-color);
 }
 
-.medium {
-  background: #f59e0b;
+.custom-progress.strong {
+  background-color: var(--valid-color);
 }
 
-.strong {
-  background: #22c55e;
-}
-
-.criteria {
-  margin-top: 10px;
-  padding-left: 20px;
+.list-group-item {
+  background-color: var(--card-color);
+  color: var(--text-color);
+  border-color: rgba(128, 128, 128, 0.25);
 }
 
 .valid {
-  color: #22c55e;
+  color: var(--valid-color);
 }
 
 .invalid {
-  color: #ef4444;
+  color: var(--invalid-color);
 }

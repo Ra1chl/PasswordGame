@@ -3,7 +3,7 @@ import PasswordInput from "./PasswordInput";
 import PasswordStrength from "./PasswordStrength";
 import CharacterSequenceValidator from "./CharacterSequenceValidator";
 import PasswordTimeValidator from "./PasswordTimeValidator";
-import type {PasswordData} from "./types";
+import type { PasswordData } from "./types";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -21,14 +21,24 @@ const App: React.FC = () => {
     };
 
     return (
-        <div className="container">
-            <h1 className="title">Kontrola hesla</h1>
+        <div className="app-page">
+            <div className="container py-5">
+                <div className="card app-card shadow-lg">
+                    <div className="card-body">
+                        <h1 className="mb-4 text-center">Kontrola hesla</h1>
 
-            <PasswordInput password={data.password} setPassword={setPassword} />
-            <PasswordStrength password={data.password} />
+                        <PasswordInput
+                            password={data.password}
+                            setPassword={setPassword}
+                        />
 
-            <CharacterSequenceValidator data={data} />
-            <PasswordTimeValidator data={data} />
+                        <PasswordStrength password={data.password} />
+
+                        <CharacterSequenceValidator data={data} />
+                        <PasswordTimeValidator data={data} />
+                    </div>
+                </div>
+            </div>
         </div>
     );
 };
