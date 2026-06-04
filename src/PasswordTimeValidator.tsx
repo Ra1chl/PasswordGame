@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import type {PasswordData, PasswordTimeResult} from "./types";
 
 type Props = {
@@ -7,8 +7,16 @@ type Props = {
 
 const PasswordTimeValidator: React.FC<Props> = ({ data }) => {
     const { createdAt } = data;
+    const [currentTime, setCurrentTime] = useState(Date.now());
 
-    const currentTime = Date.now();
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentTime(Date.now());
+        }, 1000);
+
+        return () => clearInterval(interval);
+    }, []);
+
     const elapsedTime = Math.floor((currentTime - createdAt) / 1000);
 
     const result: PasswordTimeResult = {
