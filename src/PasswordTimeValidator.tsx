@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import type {PasswordData, PasswordTimeResult} from "./types";
+import type { PasswordData, PasswordTimeResult } from "./types";
 
 type Props = {
     data: PasswordData;
@@ -7,13 +7,12 @@ type Props = {
 
 const PasswordTimeValidator: React.FC<Props> = ({ data }) => {
     const { createdAt } = data;
-    const [currentTime, setCurrentTime] = useState(Date.now());
+    const [currentTime, setCurrentTime] = useState(() => Date.now());
 
     useEffect(() => {
         const interval = setInterval(() => {
             setCurrentTime(Date.now());
         }, 1000);
-
         return () => clearInterval(interval);
     }, []);
 
@@ -27,8 +26,7 @@ const PasswordTimeValidator: React.FC<Props> = ({ data }) => {
     return (
         <div>
             <p>
-                Časová validace hesla:
-                {" "}
+                Časová validace hesla:{" "}
                 <strong>{result.isValid ? "Splněno" : "Zadáno příliš rychle"}</strong>
             </p>
             <p>Čas od začátku zadávání: {result.elapsedTime} s</p>
