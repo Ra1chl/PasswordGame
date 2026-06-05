@@ -1,5 +1,5 @@
 import React from "react";
-import type {PasswordData, CharacterSequenceResult} from "./types";
+import type {PasswordData, CharacterSequenceResult} from "../types";
 
 type Props = {
     data: PasswordData;

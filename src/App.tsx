@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useCallback } from "react";
-import PasswordInput from "./PasswordInput";
-import PasswordStrength from "./PasswordStrength";
-import CharacterSequenceValidator from "./CharacterSequenceValidator";
-import PasswordTimeValidator from "./PasswordTimeValidator";
-import CountryFlagValidator from "./CountryFlagValidator";
+import PasswordInput from "./components/PasswordInput";
+import PasswordStrength from "./components/PasswordStrength";
+import CharacterSequenceValidator from "./components/CharacterSequenceValidator";
+import PasswordTimeValidator from "./components/PasswordTimeValidator";
+import CountryFlagValidator from "./components/CountryFlagValidator";
 import type { PasswordData } from "./types";
 import "./App.css";
 

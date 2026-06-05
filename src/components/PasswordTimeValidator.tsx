@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import type { PasswordData, PasswordTimeResult } from "./types";
+import type { PasswordData, PasswordTimeResult } from "../types";
 
 type Props = {
     data: PasswordData;
