@@ -38,7 +38,8 @@ jobs:
           path: ./dist
 
 
-deploy:
+  
+  deploy:
     permissions:
       contents: read
       pages: write
